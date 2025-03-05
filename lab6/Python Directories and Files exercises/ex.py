@@ -8,7 +8,7 @@ def list_dir_files(path):
     print("Directories:", dirs)
     print("Files:", files)
     print("All Items:", all_items)
-path=r"C:\Users\ashat\Documents\GitHub\PP2\PP2"
+path=r"C:\Users\ayauk\Documents\GitHub\pp2\pp2"
 #2
 def check_access(path):
     print("Exists:", os.path.exists(path))
@@ -28,7 +28,7 @@ def test_path_details(path):
 def count_lines(file_path):
     with open(file_path, 'r') as file:
         print("Number of lines:", len(file.readlines()))
-txt=r"C:\Users\ashat\Documents\GitHub\PP2\PP2\Lab06\Python Directories and Files exercises\a.txt"
+txt=r"C:\Users\ayauk\Documents\GitHub\pp2\pp2\Lab06\Python Directories and Files exercises\a.txt"
 
 # 5
 def write_list_to_file(list_items, file_path):
@@ -44,7 +44,7 @@ def generate_26_files():
 def copy_file(source_path, destination_path):
     with open(source_path, 'r') as source, open(destination_path, 'w') as dest:
         dest.write(source.read())
-txt2=r"C:\Users\ashat\Documents\GitHub\PP2\Q.txt"
+txt2=r"C:\Users\ayauk\Documents\GitHub\pp2\Q.txt"
 
 # 8
 def delete_file(path):
