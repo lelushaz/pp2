@@ -4,7 +4,6 @@ import os
 
 pygame.init()
 
-# Проверка наличия изображений
 if not os.path.exists("images/leftarm.png"):
     print("Ошибка: файл leftarm.png не найден!")
 if not os.path.exists("images/lightarm.png"):
@@ -16,7 +15,7 @@ width, height = 800, 800
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Mickey Mouse Clock")
 
-# Убедитесь, что пути к файлам правильные
+
 second_hand_image = pygame.image.load("images/leftarm.png")
 minute_hand_image = pygame.image.load("images/lightarm.png")
 mickey_image = pygame.image.load("images/mainclock.png")
@@ -29,12 +28,10 @@ while True:
 
     now = datetime.now()
     second_angle = now.second * 6
-    minute_angle = 60 + now.minute * 6  # Поправьте эту строку, иначе она всегда будет вращаться на 60 градусов
-
+    minute_angle = 60 + now.minute * 6  
     screen.fill((255, 255, 255))
     screen.blit(mickey_image, mickey_rect)
 
-    # Вращаем и рисуем стрелки
     rotated_second_hand = pygame.transform.rotate(second_hand_image, -second_angle)
     second_hand_rect = rotated_second_hand.get_rect(center=mickey_rect.center)
     screen.blit(rotated_second_hand, second_hand_rect)

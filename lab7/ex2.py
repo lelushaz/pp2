@@ -5,7 +5,7 @@ pygame.mixer.init()
 
 screen = pygame.display.set_mode((590, 800))
 
-# Указываем путь к изображениям и музыке в папке "images"
+
 backgrounds = ['images/photo_2024-03-28_21-17-07.jpg',
                'images/photo_2024-03-28_21-19-56.jpg']
 
@@ -14,7 +14,7 @@ songs = ['images/3xKsf9qdS1CyvXSMEid6g8.mp3',
 
 background_index = 0
 
-# Загружаем начальный фон и музыку
+
 bg_image = pygame.image.load(backgrounds[background_index]).convert()
 converted_background = pygame.transform.scale(bg_image, (590, 800))
 pygame.mixer.music.load(songs[background_index])
@@ -42,7 +42,7 @@ while not finish:
 
             elif event.key == pygame.K_LEFT:
                 if background_index == 0:
-                    background_index = len(backgrounds) - 1  # Исправляем на правильный индекс
+                    background_index = len(backgrounds) - 1 
                 else:
                     background_index = background_index - 1
                 bg_image = pygame.image.load(backgrounds[background_index]).convert()
