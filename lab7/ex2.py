@@ -6,8 +6,8 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((590, 800))
 
 
-backgrounds = ['images/photo_2024-03-28_21-17-07.jpg',
-               'images/photo_2024-03-28_21-19-56.jpg']
+backgrounds = ['images/photo_2025-03-21_21-17-07.jpg',
+               'images/photo_2025-03-21_21-19-56.jpg']
 
 songs = ['images/3xKsf9qdS1CyvXSMEid6g8.mp3',
          'images/3cfOd4CMv2snFaKAnMdnvK.mp3']
