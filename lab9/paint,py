@@ -1,0 +1,89 @@
+import pygame
+
+white = (255, 255, 255)
+eraser = (0, 0, 0)
+green = (34, 139, 34)
+blue = (0, 0, 255)
+red = (255, 0, 0)
+yellow = (255, 255, 0)
+
+
+pygame.init()
+
+
+screen = pygame.display.set_mode((640, 480))
+clock = pygame.time.Clock()
+
+
+radius = 15
+mode = white
+last_pos = None
+
+def drawLineBetween(screen, start, end, width, color_mode):
+    dx = start[0] - end[0]
+    dy = start[1] - end[1]
+    iterations = max(abs(dx), abs(dy))
+
+    for i in range(iterations):
+        progress = 1.0 * i / iterations
+        aprogress = 1 - progress
+        x = int(aprogress * start[0] + progress * end[0])
+        y = int(aprogress * start[1] + progress * end[1])
+        pygame.draw.circle(screen, color_mode, (x, y), width)
+
+def drawRectangle(screen, mouse_pos, w, h, color):
+    x = mouse_pos[0]
+    y = mouse_pos[1]
+    rect = pygame.Rect(x, y, w, h)
+    pygame.draw.rect(screen, color, rect, 3)
+
+def drawsquare(screen, mouse_pos, w, h, color):
+    pygame.draw.rect(screen, color, pygame.Rect(mouse_pos[0] - w // 2, mouse_pos[1] - h // 2, w, h))
+    
+def drawTriangle(screen, mouse_pos, w, h, color):
+    pygame.draw.polygon(screen, color, [
+        (mouse_pos[0], mouse_pos[1] - h // 2),
+        (mouse_pos[0] - w // 2, mouse_pos[1] + h // 2),
+        (mouse_pos[0] + w // 2, mouse_pos[1] + h // 2)
+    ])
+
+def drawDiamond(screen, mouse_pos, w, h, color):
+    pygame.draw.polygon(screen, color, [
+        (mouse_pos[0], mouse_pos[1] - h // 2),
+        (mouse_pos[0] - w // 2, mouse_pos[1]),
+        (mouse_pos[0], mouse_pos[1] + h // 2),
+        (mouse_pos[0] + w // 2, mouse_pos[1])
+    ])
+
+def main():
+    global mode
+    while True:
+        screen.fill(white)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    mode = red
+                elif event.key == pygame.K_g:
+                    mode = green
+                elif event.key == pygame.K_b:
+                    mode = blue
+                elif event.key == pygame.K_y:
+                    mode = yellow
+                elif event.key == pygame.K_BACKSPACE:
+                    mode = eraser
+                elif event.key == pygame.K_w:
+                    drawRectangle(screen, pygame.mouse.get_pos(), 200, 100, mode)
+                elif event.key == pygame.K_t:
+                    drawTriangle(screen, pygame.mouse.get_pos(), 100, 50, mode)
+                elif event.key == pygame.K_s:
+                    drawsquare(screen, pygame.mouse.get_pos(), 100, 100, mode)
+                elif event.key == pygame.K_d:
+                    drawDiamond(screen, pygame.mouse.get_pos(), 100, 100, mode)
+
+        pygame.display.flip()
+        clock.tick(60)
+
+main()
