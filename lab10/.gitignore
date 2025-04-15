@@ -1,0 +1,9 @@
+database.ini
+__pycache__/
+connect.py
+update.py
+insert_data.py
+create_tables.py
+config.py
+create_table_and_insert.py
+

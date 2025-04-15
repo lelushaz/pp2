@@ -1,6 +1,6 @@
 import psycopg2, tools
 
-connection = psycopg2.connect(host='127.0.0.1', database='suppliers', user='AYAU', password='1234', port='5432')
+connection = psycopg2.connect(host='127.0.0.1', database='suppliers', user='postgres', password='1234', port='5432')
 
 cursor = connection.cursor()
 
